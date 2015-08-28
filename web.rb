@@ -8,6 +8,7 @@ SLACK_TOKEN="RLZn3p2IpZbUCXDBKZExlxZz"
 GIPHY_KEY="dc6zaTOxFJmzC"
 TRIGGER_WORD="#"
 IMAGE_STYLE="fixed_height" # or "fixed_width" or "original"
+SLACK_POSTING_URL="https://hooks.slack.com/services/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"
 
 get '/' do
   "Hey there!"
@@ -20,10 +21,15 @@ end
 
 
 #curl --data '{"text": "This is a line of text in a channel.\nAnd this is another line of text."}' https://hooks.slack.com/services/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
-post "/test" do
-	text = "testing here..."
-  reply = {username: "giphy", icon_emoji: ":monkey_face:", text: text}
-  return JSON.generate(reply)
+post "/simon" do
+  q = request["text"]
+
+  payload={"text": "Simon says ''"}
+
+  uri = URI.parse(SLACK_POSTING_URL)
+  response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
+
+  return
 end
 
 post "/gif" do
