@@ -24,7 +24,7 @@ end
 get "/simon" do
   q = request["text"]
 
-  payload={"text": "Simon says '#{q}'"}
+  payload={"text" => "Simon says '#{q}'"}
 
   uri = URI.parse(SLACK_POSTING_URL)
   response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
@@ -34,7 +34,7 @@ end
 post "/simon" do
   q = request["text"]
 
-  payload={"text": "Simon says '#{q}'"}
+  payload={"text" => "Simon says '#{q}'"}
 
   uri = URI.parse(SLACK_POSTING_URL)
   response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
