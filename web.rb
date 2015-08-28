@@ -21,10 +21,20 @@ end
 
 
 #curl --data '{"text": "This is a line of text in a channel.\nAnd this is another line of text."}' https://hooks.slack.com/services/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
+get "/simon" do
+  q = request["text"]
+
+  payload={"text": "Simon says '#{q}'"}
+
+  uri = URI.parse(SLACK_POSTING_URL)
+  response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
+
+  return
+end
 post "/simon" do
   q = request["text"]
 
-  payload={"text": "Simon says ''"}
+  payload={"text": "Simon says '#{q}'"}
 
   uri = URI.parse(SLACK_POSTING_URL)
   response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
