@@ -61,6 +61,9 @@ end
 post "/god" do
   respond(request["text"])
 end
+get "/god" do
+  respond(request["text"])
+end
 
 
 post "/gif" do
