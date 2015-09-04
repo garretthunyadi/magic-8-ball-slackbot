@@ -60,6 +60,14 @@ post '/thing4' do
   request["text"]
 end
 
+post '/thing5' do
+  text = request["text"] || "---"
+  payload={"text" => text}
+  uri = URI.parse(SLACK_POSTING_URL)
+  response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
+
+end
+
 
 #curl --data '{"text": "This is a line of text in a channel.\nAnd this is another line of text."}' https://hooks.slack.com/services/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
 get "/simon" do
