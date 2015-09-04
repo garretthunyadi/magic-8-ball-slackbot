@@ -36,10 +36,10 @@ end
 post "magic8" do
   response = MAGIC_8_BALL_RESPONSES.sample
 
-  q = request["text"]
-  payload={"text" => "You asked: '#{q}'"}
-  uri = URI.parse(SLACK_POSTING_URL)
-  response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
+  # q = request["text"]
+  # payload={"text" => "You asked: '#{q}'"}
+  # uri = URI.parse(SLACK_POSTING_URL)
+  # response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
 
   payload={"text" => "Magic 8 Ball says: '#{response}'"}
   uri = URI.parse(SLACK_POSTING_URL)
@@ -65,7 +65,6 @@ post '/god' do
   payload={"text" => text}
   uri = URI.parse(SLACK_POSTING_URL)
   response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
-
 end
 
 
