@@ -111,6 +111,21 @@ MAGIC_8_BALL_RESPONSES = [
 
 
 
+get "magic" do
+  "here"
+
+  # response = MAGIC_8_BALL_RESPONSES.sample
+
+  # q = request["text"]
+  # payload={"text" => "You asked: '#{q}'"}
+  # uri = URI.parse(SLACK_POSTING_URL)
+  # response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
+
+  # payload={"text" => "Magic 8 Ball says: '#{response}'"}
+  # uri = URI.parse(SLACK_POSTING_URL)
+  # response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
+end
+
 post "magic8" do
   response = MAGIC_8_BALL_RESPONSES.sample
 
@@ -122,10 +137,6 @@ post "magic8" do
   payload={"text" => "Magic 8 Ball says: '#{response}'"}
   uri = URI.parse(SLACK_POSTING_URL)
   response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
-
-
-  return
-
 end
 
 
