@@ -18,8 +18,46 @@ post '/' do
   "Woot!"
 end
 
-get '/ss' do
-  "Hey there!"
+get "magic" do
+  "here"
+
+  # response = MAGIC_8_BALL_RESPONSES.sample
+
+  # q = request["text"]
+  # payload={"text" => "You asked: '#{q}'"}
+  # uri = URI.parse(SLACK_POSTING_URL)
+  # response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
+
+  # payload={"text" => "Magic 8 Ball says: '#{response}'"}
+  # uri = URI.parse(SLACK_POSTING_URL)
+  # response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
+end
+
+post "magic8" do
+  response = MAGIC_8_BALL_RESPONSES.sample
+
+  q = request["text"]
+  payload={"text" => "You asked: '#{q}'"}
+  uri = URI.parse(SLACK_POSTING_URL)
+  response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
+
+  payload={"text" => "Magic 8 Ball says: '#{response}'"}
+  uri = URI.parse(SLACK_POSTING_URL)
+  response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
+end
+
+get '/thing1' do
+  "Hey tsssshere!"
+end
+post '/thing2' do
+  "Hey tsssshere!"
+end
+
+get '/thing3' do
+  request["text"]
+end
+post '/thing4' do
+  request["text"]
 end
 
 
@@ -51,11 +89,9 @@ end
 
 
 def respond(text)
-    payload={"text" => text}
-
+  payload={"text" => text}
   uri = URI.parse(SLACK_POSTING_URL)
   response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
-
 end
 
 post "/god" do
@@ -129,35 +165,6 @@ MAGIC_8_BALL_RESPONSES = [
 "Forget about it.",
 ]
 
-
-
-get "magic" do
-  "here"
-
-  # response = MAGIC_8_BALL_RESPONSES.sample
-
-  # q = request["text"]
-  # payload={"text" => "You asked: '#{q}'"}
-  # uri = URI.parse(SLACK_POSTING_URL)
-  # response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
-
-  # payload={"text" => "Magic 8 Ball says: '#{response}'"}
-  # uri = URI.parse(SLACK_POSTING_URL)
-  # response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
-end
-
-post "magic8" do
-  response = MAGIC_8_BALL_RESPONSES.sample
-
-  q = request["text"]
-  payload={"text" => "You asked: '#{q}'"}
-  uri = URI.parse(SLACK_POSTING_URL)
-  response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
-
-  payload={"text" => "Magic 8 Ball says: '#{response}'"}
-  uri = URI.parse(SLACK_POSTING_URL)
-  response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
-end
 
 
 
