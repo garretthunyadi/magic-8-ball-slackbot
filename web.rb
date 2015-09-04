@@ -112,6 +112,9 @@ post '/magic' do
   payload={"text" => text}
   uri = URI.parse(SLACK_POSTING_URL)
   response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
+
+    "fin."
+
 end
 
 post '/magic8' do
@@ -123,6 +126,8 @@ post '/magic8' do
   text = "Magic 8 Ball says: '#{MAGIC_8_BALL_RESPONSES.sample}'"
   payload={"text" => text}
   response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
+
+  "fin."
 end
 
 
