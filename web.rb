@@ -60,8 +60,8 @@ post '/thing4' do
   request["text"]
 end
 
-post '/thing5' do
-  text = request["text"] || "---"
+post '/god' do
+  text = "God says '#{request["text"]}'"
   payload={"text" => text}
   uri = URI.parse(SLACK_POSTING_URL)
   response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
@@ -93,20 +93,6 @@ post "/simon" do
   response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
 
   return
-end
-
-
-def respond(text)
-  payload={"text" => text}
-  uri = URI.parse(SLACK_POSTING_URL)
-  response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
-end
-
-post "/god" do
-  respond(request["text"])
-end
-get "/god" do
-  respond(request["text"])
 end
 
 
