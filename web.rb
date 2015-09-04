@@ -46,6 +46,20 @@ post "/simon" do
   return
 end
 
+
+def respond(text)
+    payload={"text" => text}
+
+  uri = URI.parse(SLACK_POSTING_URL)
+  response = Net::HTTP.post_form(uri, {"payload" => JSON.generate(payload)})
+
+end
+
+post "/god" do
+  respond(request["text"])
+end
+
+
 post "/gif" do
   # return 401 unless request["token"] == SLACK_TOKEN
   q = request["text"]
