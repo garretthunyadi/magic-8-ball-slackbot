@@ -4,11 +4,11 @@ require 'json'
 require 'net/http'
 require 'sinatra'
 
-SLACK_TOKEN="RLZn3p2IpZbUCXDBKZExlxZz"
-GIPHY_KEY="dc6zaTOxFJmzC"
+SLACK_TOKEN="xxxxxxx"
+GIPHY_KEY="xxxxxxx"
 TRIGGER_WORD="#"
 IMAGE_STYLE="fixed_height" # or "fixed_width" or "original"
-SLACK_POSTING_URL="https://hooks.slack.com/services/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"
+SLACK_POSTING_URL="https://hooks.slack.com/services/xxxxxx/xxxxx/xxxxx"
 
 MAGIC_8_BALL_RESPONSES = [
 "Signs point to yes.",
